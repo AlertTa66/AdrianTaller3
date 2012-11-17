@@ -2,56 +2,58 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Punto2;
+package Punto3_Colas;
 
 
 class Nodo 
 {
  
-   String cedula;  
-   String nombres;
-   String salario;
-   String apellidos;
+   String nroCuenta;   
+   String fecha;
+   String tipoTransaccion;
+   String tipoCuenta;
+   int monto;
    Nodo siguienteNodo; // referencia al siguiente nodo en la lista
 
-   // el constructor crea un Nodo que hace referencia al objeto (sin enlazarlo),
-   //llama al constructor de abajo.
-   Nodo(String cedula, String nombres, String apellidos, String salario) 
+   
+   Nodo(String nroCuenta, String fecha, String tipoTransaccion, String tipoCuenta, int monto) 
    { 
-      this(cedula, nombres, apellidos, salario, null ); 
+      this(nroCuenta, fecha, tipoTransaccion, tipoCuenta, monto, null ); 
    } 
    
 // el constructor que enlaza con el nodo siguiente
    
-   Nodo(String cedula, String nombres, String apellidos, String salario, Nodo nodo )
+   Nodo(String nroCuenta, String fecha, String tipoTransaccion, String tipoCuenta, int monto, Nodo nodo )
    {
-      this.cedula = cedula;
-      this.nombres = nombres;
-      this.apellidos = apellidos;
-      this.salario = salario;
+      this.nroCuenta = nroCuenta;
+      this.fecha = fecha;
+      this.tipoCuenta = tipoCuenta;
+      this.tipoTransaccion = tipoTransaccion;
       siguienteNodo = nodo;  
-   } 
-// métodos para obtener los datos del Nodo 
-    public String getApellidos() {
-        return apellidos;
+   }        
+    public String getFecha() {
+        return fecha;
     }
 
-    public String getCedula() {
-        return cedula;
+    public int getMonto() {
+        return monto;
     }
 
-    public String getNombres() {
-        return nombres;
-    }
-
-    public String getSalario() {
-        return salario;
+    public String getNroCuenta() {
+        return nroCuenta;
     }
 
     public Nodo getSiguienteNodo() {
         return siguienteNodo;
     }
-    
+
+    public String getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public String getTipoTransaccion() {
+        return tipoTransaccion;
+    }
     // obtiene el siguiente nodo
 
    Nodo obtenerSiguiente() 
