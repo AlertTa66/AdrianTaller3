@@ -59,34 +59,116 @@ public class Lista
          cabeza = cabeza.siguienteNodo;
 
       return nodoEliminado; // devuelve los datos del nodo eliminado
-   } // fin del m�todo eliminarDelFrente
+   } 
+   
+   public void ordenarXCedulaAsc() {
 
-   // elimina el �ltimo nodo de la Lista
-//   public Object eliminarDelFinal() 
-//   {
-//      if ( estaVacia() ) // lanza excepci�n si la Lista est� vac�a
-//         JOptionPane.showMessageDialog(null, "La lista está vacía");
-//
-//      Object elementoEliminado = ultimoNodo.datos; // obtiene los datos que se van a eliminar
-//
-//      // actualiza las referencias cabeza y ultimoNodo
-//      if ( cabeza == ultimoNodo )
-//         cabeza = ultimoNodo = null;
-//      else // localiza el nuevo �ltimo nodo
-//      { 
-//         Nodo actual = cabeza;
-//
-//         // itera mientras el nodo actual no haga referencia a ultimoNodo
-//         while ( actual.siguienteNodo != ultimoNodo )
-//            actual = actual.siguienteNodo;
-//   
-//         ultimoNodo = actual; // actual el nuevo ultimoNodo
-//         actual.siguienteNodo = null;
-//      } // fin de else
-//
-//      return elementoEliminado; // devuelve los datos del nodo eliminado
-//   } // fin del m�todo eliminarDelFinal
+        Nodo aux1 = cabeza;
+        Nodo aux2 = null;
+        Nodo naux ;
 
+        while (aux1 != null) {
+            aux2 = aux1;
+
+            while (aux2.siguienteNodo != null) {
+                aux2 = aux2.siguienteNodo;
+
+                if (aux1.cedula.compareTo(aux2.cedula)>0) {// esto es para intercambiar 2 nodos
+                    naux = new Nodo(aux1.cedula, aux1.nombres, aux1.apellidos, aux1.salario);
+                     
+                    aux1.cedula = aux2.cedula;
+                    aux1.nombres = aux2.nombres;
+                    aux1.apellidos = aux2.apellidos;
+                     aux1.salario = aux2.salario;
+                     
+                     aux2.cedula = naux.cedula;
+                    aux2.nombres = naux.nombres;
+                    aux2.apellidos = naux.apellidos;
+                     aux2.salario = naux.salario;
+                }
+            }
+            aux1 = aux1.siguienteNodo;
+        }
+    }
+   
+   public void ordenarXCedulaDesc() {
+
+        Nodo aux1 = cabeza;
+        Nodo aux2 = null;
+        Nodo naux ;
+
+        while (aux1 != null) {
+            aux2 = aux1;
+
+            while (aux2.siguienteNodo != null) {
+                aux2 = aux2.siguienteNodo;
+
+                if (aux1.cedula.compareTo(aux2.cedula)<0) {// esto es para intercambiar 2 nodos
+                    naux = new Nodo(aux1.cedula, aux1.nombres, aux1.apellidos, aux1.salario);
+                     
+                    aux1.cedula = aux2.cedula;
+                    aux1.nombres = aux2.nombres;
+                    aux1.apellidos = aux2.apellidos;
+                     aux1.salario = aux2.salario;
+                     
+                     aux2.cedula = naux.cedula;
+                    aux2.nombres = naux.nombres;
+                    aux2.apellidos = naux.apellidos;
+                     aux2.salario = naux.salario;
+                }
+            }
+            aux1 = aux1.siguienteNodo;
+        }
+    }
+   
+   public int cantidadNodos() {
+        int can = 0; /* empezamos con cantidad igual a 0  */
+        Nodo aux = cabeza; /* decimos que el auxiliar es igual a cabeza osea posicion1  */
+        while (aux != null) { /* ciclo hasta que el auxiliar sea nulo  */
+            can++; /* aumente la cantidad  */
+            aux = aux.siguienteNodo; /* y el auxiliar sea de siguiente en siguiente  */
+        }/* cantidad lo que hace es contar el numero de veces que auxiliar se mueve  */
+        System.out.println("cant " + can);
+        return can; /*  retorna el valor de cantidad */
+
+    }
+   
+   public void invertir() {
+
+        Nodo aux1 = cabeza;
+        Nodo aux2 = null;
+        Nodo naux ;
+        int contFinal = this.cantidadNodos();
+        int cont = 1;
+        int contInicio = 1;
+        
+
+        while (aux1 != null) {
+            aux2 = aux1;
+
+            while (aux2.siguienteNodo != null && cont<contFinal) {
+                aux2 = aux2.siguienteNodo;
+                cont++;
+            }
+            
+            naux = new Nodo(aux1.cedula, aux1.nombres, aux1.apellidos, aux1.salario);
+            aux1.cedula = aux2.cedula;
+            aux1.nombres = aux2.nombres;
+            aux1.apellidos = aux2.apellidos;
+            aux1.salario = aux2.salario;
+            aux2.cedula = naux.cedula;
+            aux2.nombres = naux.nombres;
+            aux2.apellidos = naux.apellidos;
+            aux2.salario = naux.salario;
+         
+            aux1 = aux1.siguienteNodo;
+            contInicio++;
+            cont = contInicio;
+            contFinal--;
+        }
+    }
+   
+   
    // determina si la lista est� vac�a
    public boolean estaVacia()
    { 

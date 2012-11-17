@@ -89,6 +89,33 @@ public class PilaGui extends JFrame implements ActionListener
              }
         }
         
+        if (e.getSource()==ordenaMayoraMenor)
+        {
+             if (!pila.estaVacia())
+                 pila.ordenarDesc();
+             else {
+                 JOptionPane.showMessageDialog(null, "Pila vacía");
+             }
+        }
+        
+        if (e.getSource()==ordenaMenorMayor)
+        {
+             if (!pila.estaVacia())
+                 pila.ordenarAsc();
+             else {
+                 JOptionPane.showMessageDialog(null, "Pila vacía");
+             }
+        }
+        
+        if (e.getSource()==invertirLista)
+        {
+             if (!pila.estaVacia())
+                 pila.invertir();
+             else {
+                 JOptionPane.showMessageDialog(null, "Pila vacía");
+             }
+        }
+        
         
     }
 }
