@@ -110,7 +110,7 @@ public class Taller_No_3 {
 
             case "4" :
 
-                // Da el numero de elementos
+                
                 JOptionPane.showMessageDialog(null, "No de Elementos de la lista.");
 
                 // Crea un entero n1 el cual guarda la consulta de listacantidad de nodos
