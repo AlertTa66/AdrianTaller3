@@ -74,7 +74,7 @@ public class Main {
             if(cajas.getActual().tipoCuenta.equals("1")){
                 totalAhorros+=cajas.getActual().getMonto();
             }
-            if(cajas.getActual().tipoTransaccion.equals("2")){
+            if(cajas.getActual().tipoCuenta.equals("2")){
                 totalCorriente+=cajas.getActual().getMonto();
             }
             cantidadClientes++;

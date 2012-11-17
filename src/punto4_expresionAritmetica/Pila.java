@@ -11,7 +11,7 @@ public class Pila
    }
 
    
-   public void push( Object objeto )
+   public void push( char objeto )
    { 
       listaPila.insertarAlFrente( objeto ); 
    }
@@ -33,5 +33,25 @@ public class Pila
    public Object parteSuperiorPila(){
        Object operador = listaPila.parteSuperiorPila();
        return operador;
+   }
+   
+   public boolean first(){
+       return listaPila.first();
+   }
+   
+   public boolean ultimo(){
+       return listaPila.ultimo();
+   }
+   
+   public boolean anterior(){
+       return listaPila.anterior();
+   }
+   
+   public boolean next(){
+       return listaPila.next();
+   }
+   
+   public Nodo getActual(){
+       return listaPila.getActual();
    }
 } 
