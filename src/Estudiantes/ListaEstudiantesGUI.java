@@ -300,7 +300,7 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
        }
 
         if (e.getSource() == botonOrdenarNombre){
-           lista.ordenarXNombre();
+//           lista.ordenarXNombre();
            tAListaOrdenada.setText(lista.mostrarLista());
        }
     }

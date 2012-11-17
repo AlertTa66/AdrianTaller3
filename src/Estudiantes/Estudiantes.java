@@ -12,13 +12,10 @@ public class Estudiantes {
     
     Nodo cabeza; /* Nombre que referencia donde esta el objeto ej inicio*/
 
-
     Estudiantes() {
         cabeza = null; /* cabeza queda apuntando a nulo  */
-
     }
     
-
     public void insertarPrimero(int x, String y, String z,String aa) {
         Nodo nuevo = new Nodo();
         nuevo.dato = x;
@@ -105,56 +102,13 @@ public class Estudiantes {
         pantalla += "Listado de Estudiantes\n"; /* Abre el listado  */
         Nodo aux; /*  nodo auxiliar */
         aux = cabeza; /*  auxiliar sera la cabeza */
+        pantalla+="Codigo - Nombre y Apellidos\n";
         while (aux != null) /*  ciclo hasta que auxiliar sea nulo */ {
-            pantalla += "\n[Codigo " + aux.dato + " Apellido 1 " + aux.dato2 + " Apellido 2 " + aux.dato3 + " Nombre " + aux.dato4 +"]\n"; /*  pantalla tendra entonces */
+            pantalla += aux.dato + " - " + aux.dato2 + " " + aux.dato3 + " " + aux.dato4 +"\n"; /*  pantalla tendra entonces */
             /*  los datos de auxiliar */
             aux = aux.siguiente;
-            
-            /*if (aux.dato == 1) {
-                pantalla += (".");
-                aux = aux.siguiente;
-
-            }*/// else if (aux.dato == 2) {
-               // pantalla += (".");
-               // pantalla += (".");
-               // aux = aux.siguiente;
-
-           // } else if (aux.dato == 3) {
-              //  pantalla += (".");
-              //  pantalla += (".");
-               // aux = aux.siguiente;
-
-           // } else if (aux.dato == 4) {
-               // pantalla += (".");
-                //pantalla += (".");
-               // aux = aux.siguiente;
-
-            } //else if (aux.dato == 5) {
-               // pantalla += (".");
-               // pantalla += (".");
-               // aux = aux.siguiente;
-
-            //} else if (aux.dato == 6) {
-               // pantalla += (".");
-                //pantalla += (".");
-               // aux = aux.siguiente;
-
-           // }
-           // else if (aux.dato == 7) {
-               // pantalla += (".");
-              //  pantalla += (".");
-               // aux = aux.siguiente;
-
-            //}   else {
-                //pantalla += (".");
-               // pantalla += (".");
-               // aux = aux.siguiente;
-
-           // }
-
-            /* auxiliar se uvicara despues del primer dato en el siguiente   */
-       // }
-        //    JOptionPane.showMessageDialog(null, pantalla);
+        } 
+           
     /* cuando termine el ciclo devolvera el mensaje con la pantalla de los datos  */
         return pantalla;
     }
@@ -292,8 +246,7 @@ public class Estudiantes {
         return encontrado; // retorna null cuando no lo encuentra
     }
 
-    public void ordenarXNombre() {
-
+    public void ordenarXApellido() {
 
         Nodo aux1 = cabeza;
         Nodo aux2 = null;
@@ -305,7 +258,7 @@ public class Estudiantes {
             while (aux2.siguiente != null) {
                 aux2 = aux2.siguiente;
 
-                if (aux1.dato2.compareTo(aux2.dato2)>0) {
+                if (aux1.dato3.compareTo(aux2.dato3)>0) {// esto es para intercambiar 2 nodos
                     naux.dato = aux1.dato;
                     naux.dato2 = aux1.dato2;
                     naux.dato3 = aux1.dato3;
@@ -324,7 +277,7 @@ public class Estudiantes {
         }
     }
 
-    //no funciona 
+    //no funciona ?
     public void ordenarXCodigo() {
         Nodo aux1 = cabeza;
         Nodo aux2 = null;
