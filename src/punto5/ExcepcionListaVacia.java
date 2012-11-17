@@ -1,13 +1,13 @@
-// Fig. 17.4: ExcepcionListaVacia.java
-// Definici�n de la clase ExcepcionListaVacia.
-package punto4_expresionAritmetica;
+
+package punto5;
+
 
 public class ExcepcionListaVacia extends RuntimeException 
 {
-   // constructor sin argumentos
+  
    public ExcepcionListaVacia()
    {
-      this( "Lista" ); // llama al otro constructor de ExcepcionListaVacia
+      this( "Lista" ); 
    } // fin del constructor de ExcepcionListaVacia sin argumentos
 
    // constructor con un argumento
