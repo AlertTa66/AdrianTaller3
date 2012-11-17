@@ -50,7 +50,7 @@ public class Lista
           return null;
       }
       Nodo nodoEliminado =cabeza;
-      nodoEliminado.siguienteNodo = null; //eliminar t odo lo que corresponde a la lista que era la cabeza
+      //nodoEliminado.siguienteNodo = null; //eliminar t odo lo que corresponde a la lista que era la cabeza
 
       // actualiza las referencias cabeza y ultimoNodo 
       if ( cabeza == ultimoNodo )
