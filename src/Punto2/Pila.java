@@ -31,6 +31,21 @@ public class Pila
       
    } // fin del m�todo pop
 
+   public void ordenarDesc()
+   {
+       listaPila.ordenarXCedulaAsc();
+   }
+   
+   public void ordenarAsc()
+   {
+       listaPila.ordenarXCedulaDesc();
+   }
+   
+   public void invertir()
+   {
+       listaPila.invertir();
+   }
+   
    // determina si la pila est� vac�a
    public boolean estaVacia() 
    { 
