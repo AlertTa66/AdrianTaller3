@@ -7,6 +7,7 @@ public class Lista
 {
    private Nodo primerNodo;
    private Nodo ultimoNodo;
+   private Nodo actualNodo;
    private String nombre; 
 
   
@@ -21,7 +22,7 @@ public class Lista
       nombre = nombreLista;
       primerNodo = ultimoNodo = null;
    } 
-   public void insertarAlFrente( Object elementoInsertar )
+   public void insertarAlFrente( char elementoInsertar )
    {
       if ( estaVacia() ) 
          primerNodo = ultimoNodo = new Nodo( elementoInsertar );
@@ -30,7 +31,7 @@ public class Lista
    } 
 
    
-   public void insertarAlFinal( Object elementoInsertar )
+   public void insertarAlFinal( char elementoInsertar )
    {
       if ( estaVacia() ) 
          primerNodo = ultimoNodo = new Nodo( elementoInsertar );
@@ -79,6 +80,71 @@ public class Lista
 
       return elementoEliminado; 
    } 
+   
+   public int cantidadNodos() {
+        int can = 0; /* empezamos con cantidad igual a 0  */
+        Nodo aux = primerNodo; /* decimos que el auxiliar es igual a cabeza osea posicion1  */
+        while (aux != null) { /* ciclo hasta que el auxiliar sea nulo  */
+            can++; /* aumente la cantidad  */
+            aux = aux.siguienteNodo; /* y el auxiliar sea de siguiente en siguiente  */
+        }/* cantidad lo que hace es contar el numero de veces que auxiliar se mueve  */
+        System.out.println("cant " + can);
+        return can; /*  retorna el valor de cantidad */
+
+    }
+   
+   public Nodo getActual(){
+       return actualNodo;
+   }
+   
+   public boolean ultimo(){
+       actualNodo = ultimoNodo;
+       return true;
+   }
+   
+   public boolean first(){
+       actualNodo = primerNodo;
+       return true;
+   }
+   
+   public boolean anterior() {
+       Nodo antNodo = primerNodo;
+        if (ultimoNodo == null) {
+            return false;
+        }
+        if(actualNodo == primerNodo){
+            return false;
+        }
+        if (actualNodo == null) {
+            actualNodo = ultimoNodo;
+            return true;
+        } else {
+            while (antNodo.siguienteNodo != actualNodo) {  
+                /*asignele a aux siguiente ciclo hasta que sea nulo*/
+                antNodo = antNodo.siguienteNodo;  /*le da a aux el siguiente*/
+            }
+            actualNodo = antNodo;
+            return true;
+        }
+    }
+   
+   public boolean next() {
+        if (primerNodo == null) {
+            return false;
+        }
+        if (actualNodo == null) {
+            actualNodo = primerNodo;
+            return true;
+        } else {
+            if (actualNodo.siguienteNodo != null) {
+                actualNodo = actualNodo.siguienteNodo;
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+   
 
   
    public boolean estaVacia()
@@ -88,7 +154,7 @@ public class Lista
    
    public Object parteSuperiorPila() //devuelve el valor de la parte superior de la pila sin sacarlo
    {
-       Object valor = primerNodo.datos;
+       Object valor = ultimoNodo.datos;
        return valor;
    }
    

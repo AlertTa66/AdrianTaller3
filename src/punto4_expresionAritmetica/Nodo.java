@@ -6,18 +6,18 @@ package punto4_expresionAritmetica;
 
 class Nodo
 {
-   Object datos; 
+   char datos; 
    Nodo siguienteNodo; 
-   Nodo( Object objeto ) 
+   Nodo( char objeto ) 
    { 
       this( objeto, null ); 
    } 
-   Nodo( Object objeto, Nodo nodo )
+   Nodo( char objeto, Nodo nodo )
    {
       datos = objeto;    
       siguienteNodo = nodo;  
    }
-   Object obtenerObject() 
+   char obtenerChar() 
    { 
       return datos; 
    } 
