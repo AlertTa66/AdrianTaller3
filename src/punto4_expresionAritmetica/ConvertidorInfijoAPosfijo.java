@@ -24,7 +24,8 @@ public class ConvertidorInfijoAPosfijo
               }else if(infijo.charAt(i) == '('){
                   pila.push(infijo.charAt(i));
               } else if ( esOperador(infijo.charAt(i))){
-                  
+                 
+                  pila.push(infijo.charAt(i));
               }
             }
         }
@@ -35,6 +36,11 @@ public class ConvertidorInfijoAPosfijo
         if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='%'){
             return true;
         }else return false;
+    }
+    
+    public void precedencia(char operador1, char operador2)
+    {
+        
     }
   
     
