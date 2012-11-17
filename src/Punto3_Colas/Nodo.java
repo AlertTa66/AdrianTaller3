@@ -29,6 +29,7 @@ class Nodo
       this.fecha = fecha;
       this.tipoCuenta = tipoCuenta;
       this.tipoTransaccion = tipoTransaccion;
+      this.monto = monto;
       siguienteNodo = nodo;  
    }        
     public String getFecha() {
