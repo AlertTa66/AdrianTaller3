@@ -333,7 +333,7 @@ public class Estudiantes {
         int can = 1; /*  Iniciamos con la cantidad igual a 1 */
         Nodo aux = cabeza; /* Decimos que auxiliar esta desde la posicion 1  */
 
-        while (aux != null && aux.dato != 0) { /* Ciclo hasta que el dato de auxiliar sera diferente de n  */
+        while (aux != null) { /* Ciclo hasta que el dato de auxiliar sera diferente de n  */
             can++; /* Cantidad se aumenta de 1 en 1 contando la posicion de auxiliar  */
             if (aux.dato == cod) {
                 return can;/* retorna la capital de el departamento que esta buscando  */

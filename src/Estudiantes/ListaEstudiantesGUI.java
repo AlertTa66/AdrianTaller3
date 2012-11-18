@@ -20,12 +20,14 @@ import javax.swing.*;
 public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
  private Estudiantes lista;
  private JLabel lbCodigoEst, lbApel1, lbApel2,lbNombre;
- private JTextField tfCodigoEst, tfCodigoDpto2, tfApel1, tfApel2, tfNombre; 
+ private JTextField tfCodigoEst, tfApel1, tfApel2,  tfNombre; 
  private JPanel panelPrincipal, panelContenedor, panelInicio, panelAgregar, panelEliminar, panelBuscar, panelOrdenar, panelMostrar;
  private CardLayout cardLayout;  // manejador de paneles
  private JButton botonAgregar, botonEliminar, botonBuscar, botonOrdenarNombre,botonOrdenarCodigo;
  private JTextArea tAListaOrdenada;
  private JTextArea areaMostrar;
+ private JTextField tfNombre2;
+    private JTextField tfCodigoEst2;
  
  public ListaEstudiantesGUI() //COnstructor de la Clase
    {
@@ -190,14 +192,14 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
          panelEliminar.setBackground(Color.WHITE);        
          panelEliminar.setBorder(BorderFactory.createEmptyBorder( 60,50,80,50));  // pone borde
          lbCodigoEst = new JLabel("Codigo del Estudiante");
-         tfCodigoDpto2 = new JTextField();
+         tfCodigoEst2 = new JTextField();
+         
          botonEliminar = new JButton("Eliminar");
          botonEliminar.addActionListener(this); //agregar escucha al boton
-         panelEliminar.add(lbCodigoEst);
-         panelEliminar.add(tfCodigoDpto2);
+         panelEliminar.add(lbCodigoEst);    
+         panelEliminar.add(tfCodigoEst2);      
          panelEliminar.add(botonEliminar);
-         
-         
+                  
      }
      
      
@@ -208,11 +210,11 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
        panelBuscar.setBackground(Color.WHITE);
        panelBuscar.setBorder(BorderFactory.createEmptyBorder(60, 50, 80, 50));  // pone borde
        lbNombre = new JLabel("Nombre del Estudiante");
-       tfNombre = new JTextField();
+       tfNombre2 = new JTextField();
        botonBuscar = new JButton("Buscar Cod");
        botonBuscar.addActionListener(this); //agregar escucha al boton
        panelBuscar.add(lbNombre);
-       panelBuscar.add(tfNombre);
+       panelBuscar.add(tfNombre2);
        panelBuscar.add(botonBuscar);
      
              
@@ -247,6 +249,16 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
         panelMostrar.add(areaMostrar);
 
     }
+    
+    public void limpiarCampos()
+    { //Limpia los jtexfFields
+        tfCodigoEst.setText("");
+        tfNombre.setText("");
+        tfApel1.setText("");
+        tfApel2.setText("");      
+        
+        
+    }
  public static void main (String arg[])
    {
        ListaEstudiantesGUI lista = new ListaEstudiantesGUI();
@@ -259,38 +271,46 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
     public void actionPerformed(ActionEvent e) 
     {
         if (e.getSource()== botonAgregar)
-        {
-            int codigo = Integer.parseInt(tfCodigoEst.getText());
-            String apellido1 = tfApel1.getText();
-            String apellido2 = tfApel2.getText();
-            String nombre = tfNombre.getText();
-            //String nodo = lista.buscarNodo(codigo);
-            /*if (nodo == null){
-                lista.insertarPrimero(codigo,apellido1,apellido2,nombre);
-                 JOptionPane.showMessageDialog(null, "El estudiante fue agregado");
-            }else {
-                JOptionPane.showMessageDialog(null, "El estudiante con codigo "+ codigo + " ya existe!");
-            }*/
+        {   
+            lista = new Estudiantes();    // para usar las listas
+           
+                   
+            
+            try{ //para capturar la excpecion,..encierra el código donde puede ocurrir una excepcion
+            if (!tfCodigoEst.getText().equals("")|| !tfNombre.getText().equals("") ||  //valida que los campos no esten vacios
+                  !tfApel1.getText().equals("")|| !tfApel2.equals("") ){
+                int codigo = Integer.parseInt(tfCodigoEst.getText());
+                String apellido1 = tfApel1.getText();
+                String apellido2 = tfApel2.getText();
+                String nombre = tfNombre.getText();
+                lista.insertarFinal(codigo, nombre, apellido1, apellido2);
+                JOptionPane.showMessageDialog(null, "Estudiante agregado a la LIsta");
+                limpiarCampos();
+            }
+            }catch(NumberFormatException nfe)  //excepción que captura si el codigo no es numero NumberFormatException
+            {
+               JOptionPane.showMessageDialog(null, "Codigo estudiante debe ser un numero");
+            }
+                                
         }
         
        if (e.getSource() == botonBuscar){
            String nombreEst = tfNombre.getText();
            String apellido1 = lista.buscarNodoXDep(nombreEst).dato3;
            if(apellido1 == null){
-               JOptionPane.showMessageDialog(null, "No existe el departamento "+nombreEst);
+               JOptionPane.showMessageDialog(null, "No existe el Estudiante "+nombreEst);
            } else {
-               JOptionPane.showMessageDialog(null, "La capital del departamento "+nombreEst+" es:  "+ apellido1);
+               JOptionPane.showMessageDialog(null, "El apellido del estudiante "+nombreEst+" es:  "+ apellido1);
            }
        }
        
        if (e.getSource() == botonEliminar){
-           int codigoDep = Integer.parseInt(tfCodigoDpto2.getText());
+           int codigoDep = Integer.parseInt(tfCodigoEst2.getText());
            if(lista.buscarNodo(codigoDep)==null){
-               JOptionPane.showMessageDialog(null, "El departamento con codigo "+codigoDep+" no existe");
+               JOptionPane.showMessageDialog(null, "El Estudiante con codigo "+codigoDep+" no existe");
            }else {
-               //int pos = Integer.parseInt(lista.buscarNodo(codigoDep));
-               //System.out.println("cod "+codigoDep +" - eliminando"+pos);
-               //lista.eliminarPosicion(pos);
+                lista.eliminarPosicion(lista.obtenerPosXcod(Integer.parseInt(tfCodigoEst2.getText())));    
+                    JOptionPane.showMessageDialog(null, "Eliminado");    // mensaje de confirmacion
            }
        }
        
