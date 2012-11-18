@@ -99,12 +99,12 @@ public class Estudiantes {
         //  JTextArea pantalla=new JTextArea(6,40); /* Creamos un recuadro de 6 x 40  */
 
         String pantalla = "";
-        pantalla += "Listado de Estudiantes\n"; /* Abre el listado  */
+        pantalla += "   Listado de Estudiantes\n\n"; /* Abre el listado  */
         Nodo aux; /*  nodo auxiliar */
         aux = cabeza; /*  auxiliar sera la cabeza */
-        pantalla+="Codigo - Nombre y Apellidos\n";
+        pantalla+="Codigo  -  Nombre y Apellidos\n";
         while (aux != null) /*  ciclo hasta que auxiliar sea nulo */ {
-            pantalla += aux.dato + " - " + aux.dato2 + " " + aux.dato3 + " " + aux.dato4 +"\n"; /*  pantalla tendra entonces */
+            pantalla += "   "+aux.dato + " - " + aux.dato2 + " " + aux.dato3 + " " + aux.dato4 +"\n"; /*  pantalla tendra entonces */
             /*  los datos de auxiliar */
             aux = aux.siguiente;
         } 
@@ -229,21 +229,18 @@ public class Estudiantes {
         return null; // retorna null cuando no lo encuentra
     }
 
-    public Nodo buscarNodoXDep(String dep) { /* le vamos a pasar en main el valor n  */
-        int can = 1; /*  Iniciamos con la cantidad igual a 1 */
+    public Nodo buscarNodoXNombre(String nombre) { /* le vamos a pasar en main el valor n  */
         Nodo aux = cabeza; /* Decimos que auxiliar esta desde la posicion 1  */
 
-        Nodo encontrado = null;
-
-        while (aux != null && aux.dato != 0) { /* Ciclo hasta que el dato de auxiliar sera diferente de n  */
-            can++; /* Cantidad se aumenta de 1 en 1 contando la posicion de auxiliar  */
-            if (aux.dato2.equalsIgnoreCase(dep)) {
-                encontrado = aux;
-                return encontrado;/* retorna la capital de el departamento que esta buscando  */
+        while (aux != null) { /* Ciclo hasta que el dato de auxiliar sera diferente de n  */
+            System.out.println((aux.dato2+" "+aux.dato3+" "+aux.dato4) +" - "+nombre);
+            if ((aux.dato2+" "+aux.dato3+" "+aux.dato4).contains(nombre)) {//verifica si nombre aparece en la concatenacion de nombre y apellidos
+                System.out.println(aux.dato);
+                return aux;/* retorna el valor de cantidad osea donde esta el dato buscado  */
             }
             aux = aux.siguiente; /* Auxiliar sera siguiente en siguiente  */
         }
-        return encontrado; // retorna null cuando no lo encuentra
+        return null; // retorna null cuando no lo encuentra
     }
 
     public void ordenarXApellido() {
@@ -334,10 +331,11 @@ public class Estudiantes {
         Nodo aux = cabeza; /* Decimos que auxiliar esta desde la posicion 1  */
 
         while (aux != null) { /* Ciclo hasta que el dato de auxiliar sera diferente de n  */
-            can++; /* Cantidad se aumenta de 1 en 1 contando la posicion de auxiliar  */
             if (aux.dato == cod) {
                 return can;/* retorna la capital de el departamento que esta buscando  */
             }
+            can++;/* Cantidad se aumenta de 1 en 1 contando la posicion de auxiliar  */
+            
             aux = aux.siguiente; /* Auxiliar sera siguiente en siguiente  */
         }
         return can; // retorna null cuando no lo encuentra

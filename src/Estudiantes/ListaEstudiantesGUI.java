@@ -272,7 +272,7 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
     {
         if (e.getSource()== botonAgregar)
         {   
-            lista = new Estudiantes();    // para usar las listas
+            
            
                    
             
@@ -295,12 +295,14 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
         }
         
        if (e.getSource() == botonBuscar){
-           String nombreEst = tfNombre.getText();
-           String apellido1 = lista.buscarNodoXDep(nombreEst).dato3;
-           if(apellido1 == null){
+           String nombreEst = tfNombre2.getText();
+           Nodo estudiante = lista.buscarNodoXNombre(nombreEst);
+           
+           if(estudiante == null){
                JOptionPane.showMessageDialog(null, "No existe el Estudiante "+nombreEst);
            } else {
-               JOptionPane.showMessageDialog(null, "El apellido del estudiante "+nombreEst+" es:  "+ apellido1);
+               String datos = "Cod: "+estudiante.dato+" - "+estudiante.dato2+" "+estudiante.dato3+" "+estudiante.dato4+" ";
+               JOptionPane.showMessageDialog(null, "Se encontro el estudiante \n "+ datos);
            }
        }
        
@@ -320,7 +322,7 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
        }
 
         if (e.getSource() == botonOrdenarNombre){
-//           lista.ordenarXNombre();
+            lista.ordenarXApellido();
            tAListaOrdenada.setText(lista.mostrarLista());
        }
     }

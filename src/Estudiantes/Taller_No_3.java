@@ -91,7 +91,7 @@ public class Taller_No_3 {
 
                         // Define variable cadena z la cual se agrega en un cuadro de dialogo
                         String apellido2 = (JOptionPane.showInputDialog("Digite Segundo apellido", nodo.dato4));
-                        lista.eliminarPosicion(lista.obtenerPosXcod(cod));
+                        lista.eliminarPosicion(lista.obtenerPosXcod(nodo.dato));
                         lista.insertarFinal(cod, nombre, apellido, apellido2);
                         
                     } else {
