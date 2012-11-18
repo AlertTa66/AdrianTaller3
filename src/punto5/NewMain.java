@@ -19,7 +19,7 @@ public class NewMain {
         llamadaxMinuto.insertarCima(02, 200);
         llamadaxMinuto.insertarCima(03, 300);
         llamadaxMinuto.insertarCima(04, 1000);
-        ListaLlamada llamada;
+        ListaLlamada llamada = new ListaLlamada("llamada");
 
         do {
             codigoArea = Integer.parseInt(JOptionPane.showInputDialog("Seleccione el codigo del area (1-4)"));
@@ -27,8 +27,6 @@ public class NewMain {
             duracion = Integer.parseInt(JOptionPane.showInputDialog("Minutos de duracion"));
             nroCabina = JOptionPane.showInputDialog("Numero de cabina\n 1.Cabina 1 \n 2. cabina 2 \n 3. Cabina 3");
 
-
-            llamada = new ListaLlamada("llamada");
             llamada.insertarCima(codigoArea, telefono, telefono, duracion, nroCabina);
             NodoMinxArea nodoMinxArea = llamadaxMinuto.buscarNodo(codigoArea);
             nodoMinxArea.getValorMinuto();
@@ -68,13 +66,13 @@ public class NewMain {
             if (llamada.getActual().codigoA == 01) {
                 minLlamadaArea1 += llamada.getActual().duracion * nodoMinxArea.valorMinuto;
             }
-            if (llamada.getActual().codigoA == 01) {
+            if (llamada.getActual().codigoA == 02) {
                 minLlamadaArea2 += llamada.getActual().duracion * nodoMinxArea.valorMinuto;
             }
-            if (llamada.getActual().codigoA == 01) {
+            if (llamada.getActual().codigoA == 03) {
                 minLlamadaArea3 += llamada.getActual().duracion * nodoMinxArea.valorMinuto;
             }
-            if (llamada.getActual().codigoA == 01) {
+            if (llamada.getActual().codigoA == 04) {
                 minLlamadaArea4 += llamada.getActual().duracion * nodoMinxArea.valorMinuto;
             }
 
@@ -94,8 +92,23 @@ public class NewMain {
 
         }
 
+        String resultado ="Cantidad de dinero recolectado :  $"+TotalDineroRecolectado
+                + "\n\nCantidad de dinero recolectado por área"
+                + "\n    Area 1 :  $"+minLlamadaArea1
+                + "\n    Area 2 :  $"+minLlamadaArea2
+                + "\n    Area 3 :  $"+minLlamadaArea3
+                + "\n    Area 4 :  $"+minLlamadaArea4
+                + "\n\nCantidad de minutos llamados por cabina"
+                + "\n    Cabina 3 :  "+minLlamadaCabina1+" min"
+                + "\n    Cabina 3 :  "+minLlamadaCabina2+" min"
+                + "\n    Cabina 3 :  "+minLlamadaCabina3+" min"
+                + "\n\nCantidad de dinero recolectado por cabina"
+                + "\n    Cabina 1 :  $"+dineroLlamadasCabina1
+                + "\n    Cabina 2 :  $"+dineroLlamadasCabina2
+                + "\n    Cabina 3 :  $"+dineroLlamadasCabina3
+                + "";
 
-        JOptionPane.showMessageDialog(null, "Total dinero="+TotalDineroRecolectado);
+        JOptionPane.showMessageDialog(null, resultado);
 
     }
 }
