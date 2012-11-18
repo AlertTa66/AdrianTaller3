@@ -24,6 +24,8 @@ public class ListaLlamada
       else 
          cabeza = new NodoLlamada(codigoA, telefono,destino,duracion,nroCabina, cabeza );
       
+      cantidadNodos();
+       System.out.println(imprimir());
    } 
 
    public void insertarAlFinal(int codigoA, String telefono, String destino, int duracion, String nroCabina )
