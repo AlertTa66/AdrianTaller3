@@ -8,10 +8,7 @@ package Estudiantes;
  *
  * @author aDRiaN
  */
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -21,14 +18,21 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
  private Estudiantes lista;
  private JLabel lbCodigoEst, lbApel1, lbApel2,lbNombre;
  private JTextField tfCodigoEst, tfApel1, tfApel2,  tfNombre; 
- private JPanel panelPrincipal, panelContenedor, panelInicio, panelAgregar, panelEliminar, panelBuscar, panelOrdenar, panelMostrar;
+ private JPanel panelPrincipal, panelContenedor, panelInicio, panelAgregar, panelEliminar, panelCambiarDatos, panelOrdenar, panelMostrar;
  private CardLayout cardLayout;  // manejador de paneles
  private JButton botonAgregar, botonEliminar, botonBuscar, botonOrdenarNombre,botonOrdenarCodigo;
  private JTextArea tAListaOrdenada;
  private JTextArea areaMostrar;
- private JTextField tfNombre2;
-    private JTextField tfCodigoEst2;
- 
+ private JTextField tfCodigo2;
+ private JTextField tfCodigoEst2;
+ private JTextField tfapellido1x;
+ private JTextField tfapellido2x;
+ private JTextField tfnombre2x;
+ private JButton botonModificar;
+ private Nodo estudiante;
+// private int codigo;
+// private String apellido1, apellido2, nombre;
+// 
  public ListaEstudiantesGUI() //COnstructor de la Clase
    {
    
@@ -41,7 +45,7 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
        
        construyePanelAgregar(); // construye el panel de agregar departament
        construyePanelEliminar();
-       construyePanelBuscar();
+       construyePanelCambiarDatos();
        construyePanelOrdenar();
        construyePanelMostrar();
        
@@ -81,7 +85,7 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
                    }
                });
        
-        JMenuItem elementoBuscar = new JMenuItem("Buscar Capital");
+        JMenuItem elementoBuscar = new JMenuItem("Actualizar Datos");
        menuArchivo.add(elementoBuscar); //agrega elemento al Menu archivo
        elementoBuscar.addActionListener(
                new ActionListener() { //clase interna anónima
@@ -141,7 +145,7 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
         panelPrincipal.add(panelContenedor, "Panel 1");
         panelPrincipal.add(panelAgregar, "Panel 2");
         panelPrincipal.add(panelEliminar,"Panel 3");
-        panelPrincipal.add(panelBuscar, "Panel 4");
+        panelPrincipal.add(panelCambiarDatos, "Panel 4");
         panelPrincipal.add(panelOrdenar, "Panel 5");
         panelPrincipal.add(panelMostrar, "Panel 6");
 
@@ -203,21 +207,51 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
      }
      
      
-     private void construyePanelBuscar()
+     private void construyePanelCambiarDatos()
    {
          
-       panelBuscar = new JPanel(new GridLayout(2, 1));
-       panelBuscar.setBackground(Color.WHITE);
-       panelBuscar.setBorder(BorderFactory.createEmptyBorder(60, 50, 80, 50));  // pone borde
-       lbNombre = new JLabel("Nombre del Estudiante");
-       tfNombre2 = new JTextField();
-       botonBuscar = new JButton("Buscar Cod");
+       panelCambiarDatos = new JPanel(new BorderLayout());
+       JPanel panelAux = new JPanel(new GridLayout(2,2));
+       JPanel panelAux2= new JPanel (new GridLayout(3,2));
+       panelCambiarDatos.setBackground(Color.WHITE);
+//       panelCambiarDatos.setBorder(BorderFactory.createEmptyBorder(60, 50, 80, 50));  // pone borde
+       lbCodigoEst = new JLabel("Codigo del Estudiante");
+       lbApel1  = new JLabel("Apellido 1");
+       lbApel2  = new JLabel("Apellido 2");
+       lbNombre  = new JLabel("Nombre");
+      
+       tfCodigo2 = new JTextField();
+       botonBuscar = new JButton("Buscar Estudiante");
        botonBuscar.addActionListener(this); //agregar escucha al boton
-       panelBuscar.add(lbNombre);
-       panelBuscar.add(tfNombre2);
-       panelBuscar.add(botonBuscar);
-     
-             
+       
+       botonModificar = new JButton("Actualizar Datos");
+       botonModificar.addActionListener(this);
+       botonModificar.setEnabled(false);
+                         
+       // campos a modificar 
+       
+       tfapellido1x = new JTextField();
+       tfapellido2x = new JTextField();
+       tfnombre2x = new JTextField();
+              
+       // agregar al panel
+       panelAux.add(lbCodigoEst);
+       panelAux.add(tfCodigo2);
+       panelAux.add(botonBuscar);
+       
+       panelAux2.add(lbApel1);
+       panelAux2.add(tfapellido1x);
+       
+       panelAux2.add(lbApel2);
+       panelAux2.add(tfapellido2x);
+       
+       panelAux2.add(lbNombre);
+       panelAux2.add(tfnombre2x);
+       
+       panelCambiarDatos.add(panelAux, BorderLayout.NORTH);
+       panelCambiarDatos.add(panelAux2, BorderLayout.CENTER);
+       panelCambiarDatos.add(botonModificar, BorderLayout.SOUTH);
+                 
    }
 
     private void construyePanelOrdenar() 
@@ -226,7 +260,7 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
         panelOrdenar = new JPanel();
         JPanel aux = new JPanel(new GridLayout(2, 1));
         //   panelOrdenar.setBorder(BorderFactory.createEmptyBorder(60, 50, 50, 50));  // pone borde
-        botonOrdenarNombre = new JButton("Ordenar por Nombre");
+        botonOrdenarNombre = new JButton("Ordenar por Apellido");
         botonOrdenarCodigo = new JButton("Ordenar por Codigo");
 
         botonOrdenarNombre.addActionListener(this); //agregar escucha al boton
@@ -295,15 +329,39 @@ public class ListaEstudiantesGUI extends JFrame implements ActionListener   {
         }
         
        if (e.getSource() == botonBuscar){
-           String nombreEst = tfNombre2.getText();
-           Nodo estudiante = lista.buscarNodoXNombre(nombreEst);
-           
+           int codigo = Integer.parseInt(tfCodigo2.getText());
+       // buscar estudiante por codigo a traves del jtextfield
+       
+           estudiante = lista.buscarNodo(codigo);          
+                        
            if(estudiante == null){
-               JOptionPane.showMessageDialog(null, "No existe el Estudiante "+nombreEst);
+               JOptionPane.showMessageDialog(null, "No existe el Estudiante "+codigo);
+               botonModificar.setEnabled(false);
+               tfapellido1x.setText(""); // Limpia los campos por si hay algo
+               tfapellido2x.setText("");
+               tfnombre2x.setText("");    
            } else {
-               String datos = "Cod: "+estudiante.dato+" - "+estudiante.dato2+" "+estudiante.dato3+" "+estudiante.dato4+" ";
-               JOptionPane.showMessageDialog(null, "Se encontro el estudiante \n "+ datos);
+               botonModificar.setEnabled(true); // habilita el boton de actualizar
+               tfapellido1x.setText(estudiante.dato3); // setear los campos
+               tfapellido2x.setText(estudiante.dato4);
+               tfnombre2x.setText(estudiante.dato2);
            }
+       }
+       
+       if (e.getSource() == botonModificar){
+           
+           int codigo = estudiante.dato;
+           lista.eliminarPosicion(lista.obtenerPosXcod(codigo));
+           lista.insertarFinal(codigo, tfnombre2x.getText(), tfapellido1x.getText(), tfapellido2x.getText());
+           JOptionPane.showMessageDialog(null, "Datos Actualizados correctamente");
+           botonBuscar.setEnabled(true);
+           botonModificar.setEnabled(false);
+           tfCodigo2.setText("");
+           tfapellido1x.setText(""); // Limpia los campos por si hay algo
+           tfapellido2x.setText("");
+           tfnombre2x.setText("");    
+           
+           
        }
        
        if (e.getSource() == botonEliminar){
