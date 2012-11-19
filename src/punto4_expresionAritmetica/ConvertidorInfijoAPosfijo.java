@@ -1,11 +1,21 @@
 
 package punto4_expresionAritmetica;
 
+import javax.swing.JOptionPane;
+
 
 public class ConvertidorInfijoAPosfijo
 {
     StringBuffer infijo, posfijo;//Leer expresion
     Pila pila;
+    
+    public static void main(String[] args) {
+        ConvertidorInfijoAPosfijo aPosfijo = new ConvertidorInfijoAPosfijo();
+        String text = JOptionPane.showInputDialog("Dame infijo :");
+        aPosfijo.convertidorInfijoAPosfijo(new StringBuffer(text));
+		
+		System.out.println("Posfijo : "+ aPosfijo.posfijo.toString());
+    }
     
     public void convertidorInfijoAPosfijo(StringBuffer infijo)
     {
@@ -16,6 +26,7 @@ public class ConvertidorInfijoAPosfijo
         
         while(!pila.estaVacia())  //mientras que la pila no esté vacía
         {
+            pila.imprimir();
             for(int i=0; i<infijo.length(); i++)
             {
               if (Character.isDigit(infijo.charAt(i)))
@@ -24,18 +35,32 @@ public class ConvertidorInfijoAPosfijo
               }else if(infijo.charAt(i) == '('){
                   pila.push(infijo.charAt(i));
               } else if ( esOperador(infijo.charAt(i))){
-                  pila.ultimo();
-                  Nodo operador = pila.getActual();
-                  if(esOperador(operador.datos)){
-                       posfijo.append(operador.datos);
-                  }
-                  while(pila.anterior()&&esOperador(pila.getActual().datos)&&precedencia(operador.datos, pila.getActual().datos)){
-                      operador = pila.getActual();
-                      posfijo.append(operador.datos);
-                  }
-                      
-              } else if(infijo.charAt(i) == '('){
-                  
+                  boolean entroIf = true;
+                  while (entroIf) {
+                      Nodo operador = (Nodo) pila.pop();
+                      System.out.println(operador.datos);
+                      if (esOperador(operador.datos) && precedencia(infijo.charAt(i), operador.datos)) {
+                          posfijo.append(operador.datos);
+                          entroIf = true;
+                      } else {
+                          pila.push(operador.datos);
+                          pila.push(infijo.charAt(i));
+                          entroIf = false;
+                      }
+                  }                      
+              } else if(infijo.charAt(i) == ')'){
+                  boolean entroIf = true;
+                  while (entroIf) {
+                      Nodo operador = (Nodo) pila.pop();
+                      System.out.println(operador.datos);
+                      if (esOperador(operador.datos)) {
+                          posfijo.append(operador.datos);
+                          entroIf = true;
+                      } else {
+                          System.out.println(operador.datos);
+                          entroIf = false;
+                      }
+                  }       
               }
             }
         }

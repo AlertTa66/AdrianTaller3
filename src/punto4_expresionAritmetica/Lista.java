@@ -45,7 +45,7 @@ public class Lista
       if ( estaVacia() ) 
          throw new ExcepcionListaVacia( nombre );
 
-      Object elementoEliminado = primerNodo.datos; 
+      Object elementoEliminado = primerNodo; 
 
    
       if ( primerNodo == ultimoNodo )

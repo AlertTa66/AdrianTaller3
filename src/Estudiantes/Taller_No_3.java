@@ -32,6 +32,8 @@ public class Taller_No_3 {
                     + "5. Mostrar Lista.\n "
                     + "6. Salir.");
 
+            if(op==null)
+                op="0";
             // se usa un cuadro de dialogo de tipo entrada el cual recibira la opcion
             switch (op) {
                 case "1":// inserta estudiantes
