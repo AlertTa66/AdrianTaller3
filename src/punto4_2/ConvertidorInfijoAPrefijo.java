@@ -22,7 +22,7 @@ public class ConvertidorInfijoAPrefijo {
 	public static Pila Infijo2Prefijo(String infijo) {
 		infijo = '(' + infijo ; // Agregamos al final del infijo un ')'
 		int tamaño = infijo.length();
-		Pila PilaDefinitiva = new Pila(tamaño);
+		Pila prefijo = new Pila(tamaño);
 		Pila PilaTemp = new Pila(tamaño);
 		PilaTemp.push(')'); // Agregamos a la pila temporal un '('
 		for (int i = tamaño-1; i > -1; i--) {
@@ -31,21 +31,21 @@ public class ConvertidorInfijoAPrefijo {
 			case ')':
 				PilaTemp.push(caracter);
 				break;
-			case '+':case '-':case '^':case '*':case '/':
+			case '+':case '-':case '^':case '*':case '/'://si es operador
 				while (Jerarquia(caracter) > Jerarquia(PilaTemp.nextPop()))
-					PilaDefinitiva.push(PilaTemp.pop());
+					prefijo.push(PilaTemp.pop());
 				PilaTemp.push(caracter);
 				break;
 			case '(':
 				while (PilaTemp.nextPop() != ')')
-					PilaDefinitiva.push(PilaTemp.pop());
+					prefijo.push(PilaTemp.pop());
 				PilaTemp.pop();
 				break;
 			default:
-				PilaDefinitiva.push(caracter);
+				prefijo.push(caracter);
 			}
 		}
-		return PilaDefinitiva;
+		return prefijo;
 	}
 
 	public static int Jerarquia(char elemento) {

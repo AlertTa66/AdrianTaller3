@@ -4,64 +4,67 @@ package punto4_expresionAritmetica;
 import javax.swing.JOptionPane;
 
 
-public class ConvertidorInfijoAPosfijo
+public class ConvertidorInfijoAPrefijo
 {
-    StringBuffer infijo, posfijo;//Leer expresion
+    StringBuffer infijo, prefijo;//Leer expresion
     Pila pila;
     
     public static void main(String[] args) {
-        ConvertidorInfijoAPosfijo aPosfijo = new ConvertidorInfijoAPosfijo();
+        ConvertidorInfijoAPrefijo aPrefijo = new ConvertidorInfijoAPrefijo();
         String text = JOptionPane.showInputDialog("Dame infijo :");
-        aPosfijo.convertidorInfijoAPosfijo(new StringBuffer(text));
+        aPrefijo.convertidorInfijoAPrefijo(new StringBuffer(text));
 		
-		System.out.println("Posfijo : "+ aPosfijo.posfijo.toString());
+		System.out.println("Prefijo : "+ aPrefijo.prefijo.toString());
     }
     
-    public void convertidorInfijoAPosfijo(StringBuffer infijo)
+    public void convertidorInfijoAPrefijo(StringBuffer infijo)
     {
-        posfijo = new StringBuffer();
+        prefijo = new StringBuffer();
         pila = new Pila();  
-        pila.push('('); // agregar paretensis izquierdo a la pila
-        infijo.append(")");  // anexar un parenteiss derechio al infijo
-        
-        while(!pila.estaVacia())  //mientras que la pila no esté vacía
-        {
-            pila.imprimir();
-            for(int i=0; i<infijo.length(); i++)
-            {
+        pila.push(')'); // agregar paretensis izquierdo a la pila
+        infijo.insert(0, '(');  // anexar un parenteiss derechio al infijo
+
+            for (int i = infijo.length()-1; i > -1; i--) {
+            
               if (Character.isDigit(infijo.charAt(i)))
               {
-                  posfijo.append(infijo.charAt(i));
-              }else if(infijo.charAt(i) == '('){
+                  prefijo.insert(0,infijo.charAt(i));
+                  
+              }else if(infijo.charAt(i) == ')'){
+                  
                   pila.push(infijo.charAt(i));
-              } else if ( esOperador(infijo.charAt(i))){
+                  
+              } else if (esOperador(infijo.charAt(i))){
+                  
                   boolean entroIf = true;
                   while (entroIf) {
                       Nodo operador = (Nodo) pila.pop();
                       System.out.println(operador.datos);
-                      if (esOperador(operador.datos) && precedencia(infijo.charAt(i), operador.datos)) {
-                          posfijo.append(operador.datos);
+                      if (esOperador(operador.datos) && precedencia(operador.datos,infijo.charAt(i))) {
+                          prefijo.insert(0,operador.datos);
                           entroIf = true;
                       } else {
                           pila.push(operador.datos);
                           pila.push(infijo.charAt(i));
                           entroIf = false;
                       }
-                  }                      
-              } else if(infijo.charAt(i) == ')'){
+                  }
+                  
+              } else if(infijo.charAt(i) == '('){
+                  
                   boolean entroIf = true;
                   while (entroIf) {
                       Nodo operador = (Nodo) pila.pop();
                       System.out.println(operador.datos);
                       if (esOperador(operador.datos)) {
-                          posfijo.append(operador.datos);
+                          prefijo.insert(0,operador.datos);
                           entroIf = true;
                       } else {
                           System.out.println(operador.datos);
                           entroIf = false;
                       }
                   }       
-              }
+                  
             }
         }
     }
