@@ -33,22 +33,22 @@ public class EntidadBancariaGui extends javax.swing.JFrame {
         lbCaja3.setBackground(Color.red);
         btnIngresarDatos.setEnabled(false);
         areaClientes.setText(clientes.imprimir());
-        
+
         Random rCaja = new Random();
-            caja = rCaja.nextInt(3) + 1;
-            btnAtenderCliente.setEnabled(true);
-            switch(caja){
-                case 1:
-                    lbCaja1.setBackground(Color.GREEN);
-                    break;
-               case 2:
-                    lbCaja2.setBackground(Color.GREEN);
-                    break;
-              case 3:
-                    lbCaja3.setBackground(Color.GREEN);
-                    break;
-                    
-            }
+        caja = rCaja.nextInt(3) + 1;
+        btnAtenderCliente.setEnabled(true);
+        switch (caja) {
+            case 1:
+                lbCaja1.setBackground(Color.GREEN);
+                break;
+            case 2:
+                lbCaja2.setBackground(Color.GREEN);
+                break;
+            case 3:
+                lbCaja3.setBackground(Color.GREEN);
+                break;
+
+        }
 
         //while (!clientes.estaVacia()) { 
 
@@ -132,7 +132,7 @@ public class EntidadBancariaGui extends javax.swing.JFrame {
             }
         });
 
-        cbTransaccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Consignación", "Retiro" }));
+        cbTransaccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Consignacion", "Retiro" }));
         cbTransaccion.setName("ComboTransaccion"); // NOI18N
 
         cbCuenta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ahorro", "Corriente" }));
@@ -241,53 +241,45 @@ public class EntidadBancariaGui extends javax.swing.JFrame {
 
     private void btnIngresarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarDatosActionPerformed
 
-        btnIngresarDatos.setEnabled(true);
+
         String nCuenta = tfCuenta.getText();
         String fecha = tfFecha.getText();
         String tipoTransaccion = (String) cbTransaccion.getSelectedItem();
         String tipoCuenta = (String) cbCuenta.getSelectedItem();
-        int monto ;
-        try{
-        monto = Integer.parseInt(tfMonto.getText());
-        }catch (NumberFormatException nfe){
+        int monto;
+        try {
+            monto = Integer.parseInt(tfMonto.getText());
+        } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico en el campo Monto");
             return;
         }
-        
-        if(nCuenta.equals("")||fecha.equals("")||tipoTransaccion.equals("")||tipoCuenta.equals("")){
+
+        if (nCuenta.equals("") || fecha.equals("") || tipoTransaccion.equals("") || tipoCuenta.equals("")) {
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
             return;
         }
-        
+
         switch (caja) {
             case 1:
                 caja1.insertarAlFinal(nCuenta, fecha, tipoTransaccion, tipoCuenta, monto);
-                 JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
-                tfCuenta.setText("");
-                tfFecha.setText("");
-                tfMonto.setText("");
-                cbCuenta.setSelectedIndex(0);
-                cbTransaccion.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
                 break;
             case 2:
                 caja2.insertarAlFinal(nCuenta, fecha, tipoTransaccion, tipoCuenta, monto);
-                 JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
-            tfCuenta.setText("");
-            tfFecha.setText("");;
-            tfMonto.setText("");
-            cbCuenta.setSelectedIndex(0);
-            cbTransaccion.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
                 break;
             case 3:
                 caja3.insertarAlFinal(nCuenta, fecha, tipoTransaccion, tipoCuenta, monto);
-                 JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
-            tfCuenta.setText("");
-            tfFecha.setText("");;
-            tfMonto.setText("");
-            cbCuenta.setSelectedIndex(0);
-            cbTransaccion.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
                 break;
         }
+
+        tfCuenta.setText("");
+        tfFecha.setText("");;
+        tfMonto.setText("");
+        cbCuenta.setSelectedIndex(0);
+        cbTransaccion.setSelectedIndex(0);
+        btnIngresarDatos.setEnabled(false);
 
         if (!clientes.estaVacia()) {
             Random rCliente = new Random();
@@ -300,30 +292,61 @@ public class EntidadBancariaGui extends javax.swing.JFrame {
             Random rCaja = new Random();
             caja = rCaja.nextInt(3) + 1;
             btnAtenderCliente.setEnabled(true);
-            switch(caja){
+            switch (caja) {
                 case 1:
                     lbCaja1.setBackground(Color.GREEN);
                     break;
-               case 2:
+                case 2:
                     lbCaja2.setBackground(Color.GREEN);
                     break;
-              case 3:
+                case 3:
                     lbCaja3.setBackground(Color.GREEN);
                     break;
-                    
+
             }
-            
-        }else{
+
+        } else {
             btnIngresarDatos.setEnabled(false);
-           
+            Lista cajas = new Lista("Total");
+            cajas.Add(caja1);
+            cajas.Add(caja2);
+            cajas.Add(caja3);
+
+            int totalConsignado = 0;
+            int totalRetirado = 0;
+            int totalAhorros = 0;
+            int totalCorriente = 0;
+            int cantidadClientes = 0;
+
             
+            while (cajas.next()) {
+                if (cajas.getActual().tipoTransaccion.equals("Consignacion")) {
+                    totalConsignado += cajas.getActual().getMonto();
+                }
+                if (cajas.getActual().tipoTransaccion.equals("Retiro")) {
+                    totalRetirado += cajas.getActual().getMonto();
+                }
+
+                if (cajas.getActual().tipoCuenta.equals("Ahorro")) {
+                    totalAhorros += cajas.getActual().getMonto();
+                }
+                if (cajas.getActual().tipoCuenta.equals("Corriente")) {
+                    totalCorriente += cajas.getActual().getMonto();
+                }
+                cantidadClientes++;
+            }
+
+            JOptionPane.showMessageDialog(null, 
+                    "Total Consignado:" + totalConsignado + "\n"
+                    + "Total Retirado: " + totalRetirado + "\n"
+                    + "Total Ahorros:  " + totalAhorros + "\n"
+                    + "Total Corriente: " + totalCorriente + "\n"
+                    + "Num Clientes:" + cantidadClientes);
+
         }
     }//GEN-LAST:event_btnIngresarDatosActionPerformed
 
     public static void main(String args[]) {
-
-
-
 
         EntidadBancariaGui ebg = new EntidadBancariaGui();
         ebg.setVisible(true);
