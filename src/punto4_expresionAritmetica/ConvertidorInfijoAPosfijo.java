@@ -9,12 +9,7 @@ public class ConvertidorInfijoAPosfijo
     StringBuffer infijo, posfijo;//Leer expresion
     Pila pila;
     
-    public static void main(String[] args) {
-        ConvertidorInfijoAPosfijo aPosfijo = new ConvertidorInfijoAPosfijo();
-        String text = JOptionPane.showInputDialog("Dame infijo :");
-        aPosfijo.convertidorInfijoAPosfijo(new StringBuffer(text));
-	System.out.println("Posfijo : "+ aPosfijo.posfijo.toString());
-    }
+  
     
     public void convertidorInfijoAPosfijo(StringBuffer infijo)
     {

@@ -65,7 +65,7 @@ public class PilaGui extends JFrame implements ActionListener
            
            if(!cedula.equals("")&&!nombre.equals("")&&!apellidos.equals("")
                    &&!salario.equals("")){
-              pila.push(cedula, nombre, apellidos, salario); 
+//              pila.push(cedula, nombre, apellidos, salario); 
            }else{
            JOptionPane.showMessageDialog(null, "Objeto no insertado, debe insertar todos los datos, vuelva  intentarlo");
            }

@@ -8,15 +8,7 @@ public class ConvertidorInfijoAPrefijo
 {
     StringBuffer infijo, prefijo;//Leer expresion
     Pila pila;
-    
-    public static void main(String[] args) {
-        ConvertidorInfijoAPrefijo aPrefijo = new ConvertidorInfijoAPrefijo();
-        String text = JOptionPane.showInputDialog("Dame infijo :");
-        aPrefijo.convertidorInfijoAPrefijo(new StringBuffer(text));
-		
-		System.out.println("Prefijo : "+ aPrefijo.prefijo.toString());
-    }
-    
+ 
     public void convertidorInfijoAPrefijo(StringBuffer infijo)
     {
         prefijo = new StringBuffer();

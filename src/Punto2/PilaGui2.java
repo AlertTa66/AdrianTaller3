@@ -16,7 +16,6 @@ import javax.swing.*;
 
 public class PilaGui2 extends JFrame implements ActionListener   {
  
-    private Lista empleado;
     private JPanel panelPrincipal;
     private CardLayout cardLayout;
     private JPanel panelAgregar;
@@ -40,14 +39,14 @@ public class PilaGui2 extends JFrame implements ActionListener   {
    
        super("Lista de Empleados");  // llama al constructor de JFrame, pone titulo a la ventana
        
-       empleado =new Lista(); // inicailizamos objteo LIstas
+       pila = new Pila();    
        panelPrincipal = new JPanel(); //inicializo panel principal y el manejador cardlayoud
        cardLayout = new CardLayout();
        construyePanelInicio (); // llamo al metodo que construye el panel de inicio que solo pinta el fondo de blanco
        construyePanelAgregar(); 
        construyePanelOrdenar();
        construyePanelInvertir();
-       pila = new Pila();
+      
        
        
        construyePanelPrincipal(); // construye el panel que me maneja los paneles 
@@ -76,7 +75,7 @@ public class PilaGui2 extends JFrame implements ActionListener   {
             }
         });
        
-       JMenuItem elementoEliminar = new JMenuItem("Eliminar Estudiante");
+       JMenuItem elementoEliminar = new JMenuItem("Eliminar Empleado");
        menuArchivo.add(elementoEliminar); //agrega elemento al Menu archivo
        elementoEliminar.addActionListener(
                new ActionListener() { //clase interna anónima
@@ -195,38 +194,56 @@ public class PilaGui2 extends JFrame implements ActionListener   {
         panelOrdenar.add(tAListaOrdenada,BorderLayout.CENTER);
                    
    }
-        
-        
-         private void construyePanelInvertir() {
+            
+         private void construyePanelInvertir() 
+    {
              
-             panelInvertir= new JPanel();
+             panelInvertir= new JPanel(new BorderLayout());
              botonInvertir = new JButton("Invertir Lista");
              botonInvertir.addActionListener(this);
-             areaImprimir =  new JTextArea();
+             areaImprimir =  new JTextArea(6,20);
              
-             panelInvertir.add(botonInvertir);
-             panelInvertir.add(areaImprimir);
+             panelInvertir.add(botonInvertir, BorderLayout.NORTH);
+             panelInvertir.add(areaImprimir, BorderLayout.CENTER);
         
     }
-
-
+         
+             
+        private void limpiarCampos()
+        {
+            
+            areaImprimir.setText("");
+            tAListaOrdenada.setText("");
+            tfApellidos.setText("");
+            tfCedula.setText("");
+            tfNombres.setText("");
+            tfSalario.setText("");
+                    
+            
+        }
+        
     @Override
     public void actionPerformed(ActionEvent e) 
     {
         if (e.getSource()== botonAgregar)
         {          
-            
+           try{ 
             if (!tfCedula.getText().equals("") && !tfNombres.getText().equals("") &&  //valida que los campos no esten vacios
                   !tfApellidos.getText().equals("")&& !tfSalario.equals("") ){
-                String cedula = tfCedula.getText();
+                int cedula = Integer.parseInt(tfCedula.getText());
                 String nombres = tfNombres.getText();
                 String apellidos = tfApellidos.getText();
-                String salario = tfSalario.getText();
+                int salario = Integer.parseInt(tfSalario.getText());                
                 pila.push(cedula, nombres, apellidos, salario); 
                 JOptionPane.showMessageDialog(null, "Empleado agregado a la Pila");
+                limpiarCampos();
             }else{
                 JOptionPane.showMessageDialog(null, "Empleado no insertado, debe insertar todos los datos, vuelva  intentarlo");
             }
+           }catch(NumberFormatException nfe){
+               JOptionPane.showMessageDialog(null, "Codigo y salario deben ser Numeros Enteros.");
+           }
+            
             }
         
          if (e.getSource() == botonOrdenarMayorAMenor){

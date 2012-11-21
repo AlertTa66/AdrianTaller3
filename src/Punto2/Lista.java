@@ -25,7 +25,7 @@ public class Lista
    } 
 
    // inserta el Nodo de primero
-   public void insertarCima(String cedula, String nombres, String apellidos, String salario )
+   public void insertarCima(int cedula, String nombres, String apellidos, int salario )
    {
       if ( estaVacia() ) // cabeza y ultimoNodo hacen referencia al mismo objeto
          cabeza = ultimoNodo = new Nodo(cedula, nombres, apellidos, salario );
@@ -34,7 +34,7 @@ public class Lista
    } 
 
    // inserta objeto Object al final del la Lista
-   public void insertarAlFinal( String cedula, String nombres, String apellidos, String salario )
+   public void insertarAlFinal( int cedula, String nombres, String apellidos, int salario )
    {
       if ( estaVacia() ) // cabeza y ultimoNodo hacen referencia al mismo objeto
          cabeza = ultimoNodo = new Nodo( cedula, nombres, apellidos, salario );
@@ -73,7 +73,7 @@ public class Lista
             while (aux2.siguienteNodo != null) {
                 aux2 = aux2.siguienteNodo;
 
-                if (aux1.cedula.compareTo(aux2.cedula)>0) {// esto es para intercambiar 2 nodos
+                if (aux1.cedula > aux2.cedula) {// esto es para intercambiar 2 nodos
                     naux = new Nodo(aux1.cedula, aux1.nombres, aux1.apellidos, aux1.salario);
                      
                     aux1.cedula = aux2.cedula;
@@ -103,7 +103,7 @@ public class Lista
             while (aux2.siguienteNodo != null) {
                 aux2 = aux2.siguienteNodo;
 
-                if (aux1.cedula.compareTo(aux2.cedula)<0) {// esto es para intercambiar 2 nodos
+                if (aux1.cedula < aux2.cedula) {// esto es para intercambiar 2 nodos
                     naux = new Nodo(aux1.cedula, aux1.nombres, aux1.apellidos, aux1.salario);
                      
                     aux1.cedula = aux2.cedula;

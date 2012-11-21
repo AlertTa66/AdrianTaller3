@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Punto2;
 
 
@@ -9,27 +5,41 @@ public class Pila
 {
    private Lista listaPila;
 
+ 
    // constructor sin argumentos
-   public Pila() 
+  public Pila() 
    { 
-      listaPila = new Lista( "pila" ); 
+     listaPila = new Lista( "pila" ); 
    } // fin del constructor de Pila sin argumentos
 
    // agrega objeto a la pila
-   public void push(String cedula, String nombres, String apellidos, String salario)
+   public void push(int cedula, String nombres, String apellidos, int salario)
    { 
-      listaPila.insertarCima(cedula, nombres, apellidos, salario); 
+     listaPila.insertarCima(cedula, nombres, apellidos, salario); 
    } // fin del m�todo push
-
-   // elimina objeto de la pila
+ 
+ 	  // elimina objeto de la pila
    public Nodo pop() 
-   { 
-       if (!estaVacia()){
-           return listaPila.eliminarCima();
-       }else           
-           return null;
+ 	    { 
+      if (!estaVacia()){
+ 	           return listaPila.eliminarCima();
+      }else           
+ 	          return null;
+ 		
       
-   } // fin del m�todo pop
+	   } // fin del m�todo pop
+ 	 
+
+   // determina si la pila est� vac�a
+ 	 	
+   public boolean estaVacia() 
+ 	 
+   { 
+	 	
+      return listaPila.estaVacia(); 
+ 	 
+   } // fin del m�todo estaVacia
+
 
    public void ordenarDesc()
    {
@@ -40,21 +50,23 @@ public class Pila
    {
        listaPila.ordenarXCedulaDesc();
    }
-   
+
    public void invertir()
    {
        listaPila.invertir();
    }
-   
-   // determina si la pila est� vac�a
-   public boolean estaVacia() 
-   { 
-      return listaPila.estaVacia(); 
-   } // fin del m�todo estaVacia
-
+ 	
+ 	 
    // imprime el contenido de la pila
+ 	 	
    public String imprimir() 
-   { 
+ 	 	
+        { 
+ 	 	
       return listaPila.imprimir(); 
+ 		
    } // fin del m�todo imprimir
+
+
+
 } 

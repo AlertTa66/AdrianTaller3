@@ -8,35 +8,35 @@ package Punto2;
 class Nodo 
 {
  
-   String cedula;  
+   int cedula;  
    String nombres;
-   String salario;
+   int salario;
    String apellidos;
    Nodo siguienteNodo; // referencia al siguiente nodo en la lista
 
    // el constructor crea un Nodo que hace referencia al objeto (sin enlazarlo),
    //llama al constructor de abajo.
-   Nodo(String cedula, String nombres, String apellidos, String salario) 
+   Nodo(int cedula, String nombres, String apellidos, int salario) 
    { 
-      this(cedula, nombres, apellidos, salario, null ); 
+      this(cedula, nombres, apellidos, salario, null); 
    } 
    
 // el constructor que enlaza con el nodo siguiente
    
-   Nodo(String cedula, String nombres, String apellidos, String salario, Nodo nodo )
+   Nodo(int cedula, String nombres, String apellidos, int salario, Nodo nodo )
    {
       this.cedula = cedula;
       this.nombres = nombres;
       this.apellidos = apellidos;
       this.salario = salario;
-      siguienteNodo = nodo;  
+      this.siguienteNodo = nodo;  
    } 
 // métodos para obtener los datos del Nodo 
     public String getApellidos() {
         return apellidos;
     }
 
-    public String getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
@@ -44,7 +44,7 @@ class Nodo
         return nombres;
     }
 
-    public String getSalario() {
+    public int getSalario() {
         return salario;
     }
 
