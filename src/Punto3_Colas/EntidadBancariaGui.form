@@ -35,12 +35,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="152" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAtenderCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="lbCaja3" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="lbCaja2" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Component id="lbCaja1" min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -54,16 +54,16 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextField1" max="32767" attributes="0"/>
-                          <Component id="jTextField3" max="32767" attributes="0"/>
-                          <Component id="jTextField2" max="32767" attributes="0"/>
-                          <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox1" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="tfCuenta" max="32767" attributes="0"/>
+                          <Component id="tfMonto" max="32767" attributes="0"/>
+                          <Component id="tfFecha" max="32767" attributes="0"/>
+                          <Component id="cbCuenta" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbTransaccion" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnIngresarDatos" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="56" max="32767" attributes="0"/>
@@ -76,14 +76,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="lbCaja1" min="-2" pref="28" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbCaja2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="btnAtenderCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lbCaja3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -93,30 +93,30 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfCuenta" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfFecha" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbTransaccion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfMonto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnIngresarDatos" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -138,7 +138,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lbCaja1">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Caja 1"/>
@@ -147,10 +147,10 @@
             <LineBorder/>
           </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="labelCaja1"/>
+        <Property name="name" type="java.lang.String" value="labelCaja1" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lbCaja2">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Caja 2"/>
@@ -159,10 +159,10 @@
             <LineBorder/>
           </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="labelCaja2"/>
+        <Property name="name" type="java.lang.String" value="labelCaja2" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lbCaja3">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Caja 3"/>
@@ -171,15 +171,15 @@
             <LineBorder/>
           </Border>
         </Property>
-        <Property name="name" type="java.lang.String" value="labelCaja3"/>
+        <Property name="name" type="java.lang.String" value="labelCaja3" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnAtenderCliente">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atender Cliente"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtenderClienteActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -207,25 +207,25 @@
         <Property name="text" type="java.lang.String" value="Monto"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="tfCuenta">
       <Properties>
-        <Property name="name" type="java.lang.String" value="tfCuenta"/>
+        <Property name="name" type="java.lang.String" value="tfCuenta" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="tfFecha">
       <Properties>
-        <Property name="name" type="java.lang.String" value="tfFecha"/>
+        <Property name="name" type="java.lang.String" value="tfFecha" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="tfMonto">
       <Properties>
-        <Property name="name" type="java.lang.String" value="tfMonto"/>
+        <Property name="name" type="java.lang.String" value="tfMonto" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfMontoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cbTransaccion">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -233,10 +233,10 @@
             <StringItem index="1" value="Retiro"/>
           </StringArray>
         </Property>
-        <Property name="name" type="java.lang.String" value="ComboTransaccion"/>
+        <Property name="name" type="java.lang.String" value="ComboTransaccion" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cbCuenta">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -244,15 +244,15 @@
             <StringItem index="1" value="Corriente"/>
           </StringArray>
         </Property>
-        <Property name="name" type="java.lang.String" value="comboCuenta"/>
+        <Property name="name" type="java.lang.String" value="comboCuenta" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnIngresarDatos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingresar Datos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarDatosActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

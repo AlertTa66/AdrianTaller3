@@ -66,7 +66,7 @@ public class ListaCliente
    // imprime el contenido de la lista
    public String imprimir()
    {
-      String impresion=" ";
+      String impresion="";
    
 //      impresion += "La pila es: "+ nombre ;
       NodoCliente actual = cabeza;
@@ -74,7 +74,7 @@ public class ListaCliente
       // mientras no est� al final de la lista, imprime los datos del nodo actual
       while ( actual != null ) 
       {
-         impresion = "Nro de Clientes: "+ actual.numeroCliente;
+         impresion += "Cliente  "+ actual.numeroCliente+" \n";
          actual = actual.siguienteNodo;
       } // fin de while
 
