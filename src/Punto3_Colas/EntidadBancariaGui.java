@@ -262,12 +262,30 @@ public class EntidadBancariaGui extends javax.swing.JFrame {
         switch (caja) {
             case 1:
                 caja1.insertarAlFinal(nCuenta, fecha, tipoTransaccion, tipoCuenta, monto);
+                 JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
+                tfCuenta.setText("");
+                tfFecha.setText("");
+                tfMonto.setText("");
+                cbCuenta.setSelectedIndex(0);
+                cbTransaccion.setSelectedIndex(0);
                 break;
             case 2:
                 caja2.insertarAlFinal(nCuenta, fecha, tipoTransaccion, tipoCuenta, monto);
+                 JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
+            tfCuenta.setText("");
+            tfFecha.setText("");;
+            tfMonto.setText("");
+            cbCuenta.setSelectedIndex(0);
+            cbTransaccion.setSelectedIndex(0);
                 break;
             case 3:
                 caja3.insertarAlFinal(nCuenta, fecha, tipoTransaccion, tipoCuenta, monto);
+                 JOptionPane.showMessageDialog(null, "Datos ingresados correctamente");
+            tfCuenta.setText("");
+            tfFecha.setText("");;
+            tfMonto.setText("");
+            cbCuenta.setSelectedIndex(0);
+            cbTransaccion.setSelectedIndex(0);
                 break;
         }
 
@@ -297,30 +315,12 @@ public class EntidadBancariaGui extends javax.swing.JFrame {
             
         }else{
             btnIngresarDatos.setEnabled(false);
+           
+            
         }
     }//GEN-LAST:event_btnIngresarDatosActionPerformed
 
     public static void main(String args[]) {
-
-//        ColaCliente clientes = new ColaCliente();
-//        Lista caja1 = new Lista("Caja 1");
-//        Lista caja2 = new Lista("Caja 2");
-//        Lista caja3 = new Lista("Caja 3");
-//        int numClientes = 1;
-//        
-//        clientes.enqueue(numClientes++);
-//        clientes.enqueue(numClientes++);
-//
-//        
-//        while (!clientes.estaVacia()) { 
-//            Random rCliente = new Random();
-//            int ingresaCliente = rCliente.nextInt(10);
-//            if(ingresaCliente>7){// se usa para que haya mas probabilidad de que no lleguen mas clientes a que lleguen
-//                clientes.enqueue(numClientes++);
-//                
-//            }
-//            
-//           }
 
 
 
